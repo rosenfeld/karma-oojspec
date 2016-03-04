@@ -42,16 +42,6 @@ just for immediate execution, without reporting to Karma server.
     };
     %MAPPINGS%
     %CLIENT_CONFIG%
-
-    /*
-    var initScript = document.createElement('script');
-    for (var f in __karma__.files)
-      if /oojspec-initializer.js$/.test(f) {
-        initScript.src = f + '?' + __karma__.files[f];
-        break;
-      }
-    document.body.appendChild(initScript);
-    */
   </script>
   <script src="/base/node_modules/karma-oojspec/dist/oojspec-initializer.js"></script>
 </body>
