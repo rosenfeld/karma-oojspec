@@ -1,0 +1,37 @@
+{
+  "name": "karma-oojspec",
+  "version": "1.0.0",
+  "description": "Karma framework to support the OOJSpec test runner",
+  "main": "dist/index.js",
+  "keywords": [
+    "karma-plugin",
+    "karma-framework",
+    "oojspec"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rosenfeld/karma-oojspec.git"
+  },
+  "author": "Rodrigo Rosenfeld Rosas <rr.rosas@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rosenfeld/karma-oojspec/issues"
+  },
+  "homepage": "https://github.com/rosenfeld/karma-oojspec",
+  "contributors": [
+    "Frederico Schardong <frede.sch@gmail.com>"
+  ],
+  "devDependencies": {
+    "coffee-loader": "^0.7.2",
+    "coffee-script": "^1.10.0",
+    "css-loader": "^0.14.5",
+    "karma": "",
+    "oojspec": "^1.0.0",
+    "style-loader": "^0.13.0",
+    "webpack": "^1.12.14"
+  },
+  "scripts": {
+    "prepublish": "rm -rf dist && node_modules/.bin/webpack && node_modules/.bin/coffee -c --no-header -b -o dist src/index.coffee"
+  },
+  "files": [ "dist", "static" ]
+}

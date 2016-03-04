@@ -1,0 +1,58 @@
+<!doctype html>
+<!--
+This file is almost the same as context.html - loads all source files,
+but its purpose is to be loaded in the main frame (not within an iframe),
+just for immediate execution, without reporting to Karma server.
+-->
+<html>
+<head>
+%X_UA_COMPATIBLE%
+  <title>Karma DEBUG RUNNER</title>
+  <link href="favicon.ico" rel="icon" type="image/x-icon" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+</head>
+<body>
+  <script type="text/javascript">
+    window.__karma__ = {
+      info: function(info) {
+        if (info.dump && window.console) window.console.log(info.dump);
+      },
+      complete: function() {
+        if (window.console) window.console.log('Skipped ' + this.skipped + ' tests');
+      },
+      store: function() {},
+      skipped: 0,
+      result: window.console ? function(result) {
+        if (result.skipped) {
+          this.skipped++;
+          return;
+        }
+        var msg = result.success ? 'SUCCESS ' : 'FAILED ';
+        var result_suite = result.suite.length ? result.suite.join(' ') : '';
+        window.console.log(msg + result_suite + ' ' + result.description);
+
+        for (var i = 0; i < result.log.length; i++) {
+          window.console.error(result.log[i]);
+        }
+      } : function() {},
+      loaded: function() {
+        this.start();
+      }
+    };
+    %MAPPINGS%
+    %CLIENT_CONFIG%
+
+    /*
+    var initScript = document.createElement('script');
+    for (var f in __karma__.files)
+      if /oojspec-initializer.js$/.test(f) {
+        initScript.src = f + '?' + __karma__.files[f];
+        break;
+      }
+    document.body.appendChild(initScript);
+    */
+  </script>
+  <script src="/base/node_modules/karma-oojspec/dist/oojspec-initializer.js"></script>
+</body>
+</html>
